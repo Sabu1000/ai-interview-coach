@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+.env
+.venv/
+.venv311/
+venv/
+env/
+ENV/
+
+# AI/ML Models and Large Files
+*.h5
+*.pkl
+*.joblib
+*.bin
+models/
+checkpoints/
+weights/
+
+# Generated Media Files
+videos/
+frames/
+*.wav
+*.mp3
+*.mp4
+*.avi
+*.mov
+output_audio.wav
+transcript.txt
+*.jpg
+*.png
+*.jpeg
+interview_feedback.txt
+
+# API Keys and Secrets
+.env
+.env.local
+api_keys.txt
+config.ini
+secrets.json
+
+# IDE and Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+*.pyc
+
+# Streamlit
+.streamlit/

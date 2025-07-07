@@ -52,6 +52,8 @@ if uploaded_video is not None:
     st.subheader("NLP Results")
     st.json(nlp_results)
 
+    job_title = st.text_input("Enter the target job title (e.g., Product Manager): ", value="Software Engineer")
+
     with st.spinner("Generating AI feedback..."):
         feedback = generate_interview_feedback(transcript, emotions, nlp_results)
 

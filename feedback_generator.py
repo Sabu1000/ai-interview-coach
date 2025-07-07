@@ -4,7 +4,7 @@ from openai import OpenAI
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-def generate_interview_feedback(transcript, emotion_results, nlp_results):
+def generate_interview_feedback(transcript, emotion_results, nlp_results, job_title="Software Engineer"):
     emotion_summary = "\n".join([f"{k}: {v}" for k, v in emotion_results.items()])
 
     filler_text = ", ".join([f"{word} ({count})" for word, count in nlp_results["filter_counts"].items()])
@@ -14,7 +14,9 @@ def generate_interview_feedback(transcript, emotion_results, nlp_results):
 
     prompt = f"""
 
-    You're an AI interview coach. Based on the following input, generate feedback for the user:
+    You are an expert career coach and interviewer.
+
+    The candidate is applying for a **{job_title}** role. Below is their interview and performance data.
 
     1. TRANSCRIPT:
     \"\"\"{transcript}\"\"\"
@@ -29,11 +31,11 @@ def generate_interview_feedback(transcript, emotion_results, nlp_results):
     - Polarity: {polarity:.2f}
     - Subjectivity: {subjectivity:.2f}
 
-    Please provide:
-    - Constructive feedback on the user's communication style
-    - Observations on confidence based on emotions
-    - Areas for improvement
-    - Encouragement and praise where appropriate
+    Please:
+    1. Evaluate the answer as if you're interviewing them for a {job_title}.
+    2. Compare their response to what you'd expect from a top {job_title} candidate.
+    3. Highlight strengths and areas of improvement in communication and content.
+    4. Give personalized, encouraging feedback.
 
     """
     try:
